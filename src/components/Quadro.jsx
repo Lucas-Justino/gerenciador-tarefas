@@ -6,7 +6,7 @@ import Card from "./Card";
 import { useState } from "react";
 import NovaTarefa from "./NovaTarefa";
 
-const Quadro = ({ icone, nome, lista, setLista }) => {
+const Quadro = ({ icone, nome, lista, setLista, moverProximo }) => {
   const [adicionando, setAdicionando] = useState(false);
   const [tarefaEditando, setTarefaEditando] = useState(null);
 
@@ -34,6 +34,15 @@ const Quadro = ({ icone, nome, lista, setLista }) => {
       prevLista.filter((tarefa) => tarefa.titulo !== tarefaApagar.titulo)
     );
   };
+
+  const handleMoverProximo = (tarefa) => {
+    if(nome === 'Pendentes'){
+      moverProximo(tarefa, 'andamento')
+    }
+    else if(nome === 'Em andamento'){
+      moverProximo(tarefa, 'concluido')
+    }
+  }
 
   return (
     <div className="relative flex flex-col m-10 gap-4 mb-2">
@@ -76,6 +85,9 @@ const Quadro = ({ icone, nome, lista, setLista }) => {
             nomeLista={nome}
             editar={() => handleEditarTarefa(tarefa)}
             apagar={() => handleApagarTarefa(tarefa)}
+            moverProximo={handleMoverProximo}
+            tarefa={tarefa}
+            indice={index}
           />
         ))}
     </div>

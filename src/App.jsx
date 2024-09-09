@@ -13,13 +13,13 @@ export default function App() {
 }
 
 const Content = () => {
-  const { pendente, setPendente, andamento, setAndamento, concluido, setConcluido } = useContext(TarefaContext);
+  const { pendente, setPendente, andamento, setAndamento, concluido, setConcluido, moverProximo } = useContext(TarefaContext);
 
   return (
     <div className="flex gap-4">
-      <Quadro icone="andamento" nome={"Pendentes"} lista={pendente} setLista={setPendente} />
-      <Quadro icone="andamento" nome={"Em andamento"} lista={andamento} setLista={setAndamento} />
-      <Quadro icone="concluido" nome={"Concluídas"} lista={concluido} setLista={setConcluido} />
+      <Quadro icone="andamento" nome={"Pendentes"} lista={pendente} setLista={setPendente} moverProximo={moverProximo} />
+      <Quadro icone="andamento" nome={"Em andamento"} lista={andamento} setLista={setAndamento} moverProximo={moverProximo} />
+      <Quadro icone="concluido" nome={"Concluídas"} lista={concluido} setLista={setConcluido} moverProximo={moverProximo} />
     </div>
   );
 };
