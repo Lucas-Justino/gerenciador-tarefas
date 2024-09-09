@@ -1,25 +1,18 @@
-import React, { useContext } from 'react';
-import Quadro from "./components/Quadro";
-import { TarefaContext } from './context/TarefaContext';
+import React from 'react';
 import { TarefaContextProvider } from './context/TarefaContext';
-
+import Tarefas from './pages/Tarefas';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Login from './pages/Login';
 
 export default function App() {
   return (
     <TarefaContextProvider>
-      <Content />
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Login/>}/>
+          <Route path='/tarefas' element={<Tarefas />}/>
+        </Routes>
+      </BrowserRouter>
     </TarefaContextProvider>
   );
 }
-
-const Content = () => {
-  const { pendente, setPendente, andamento, setAndamento, concluido, setConcluido, moverProximo } = useContext(TarefaContext);
-
-  return (
-    <div className="flex gap-4">
-      <Quadro icone="andamento" nome={"Pendentes"} lista={pendente} setLista={setPendente} moverProximo={moverProximo} />
-      <Quadro icone="andamento" nome={"Em andamento"} lista={andamento} setLista={setAndamento} moverProximo={moverProximo} />
-      <Quadro icone="concluido" nome={"Concluídas"} lista={concluido} setLista={setConcluido} moverProximo={moverProximo} />
-    </div>
-  );
-};
