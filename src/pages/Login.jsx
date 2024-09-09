@@ -7,6 +7,7 @@ const Login = () => {
   const [senha, setSenha] = useState("");
 
   const { usuario } = useContext(TarefaContext);
+  const {setUsuarioAtivo} = useContext(TarefaContext);
 
   const navigate = useNavigate();
 
@@ -17,6 +18,7 @@ const Login = () => {
     }
     for (const conta of usuario) {
       if (conta.email === email && conta.senha === senha) {
+        setUsuarioAtivo(conta.nome)
         navigate("/tarefas");
         return;
       }

@@ -7,6 +7,7 @@ export const TarefaContextProvider = ({children}) =>{
     const [andamento, setAndamento] = useState([]);
     const [concluido, setConcluido] = useState([]);
     const [usuario, setUsuario] = useState([])
+    const [usuarioAtivo, setUsuarioAtivo] = useState('');
 
     const moverProximo = (tarefa, listaDestino) => {
         if(listaDestino === 'andamento'){
@@ -34,7 +35,9 @@ export const TarefaContextProvider = ({children}) =>{
             moverProximo,
             usuario,
             setUsuario,
-            adicionarUsuario
+            adicionarUsuario,
+            usuarioAtivo,
+            setUsuarioAtivo
         }}>
             {children}
         </TarefaContext.Provider>
