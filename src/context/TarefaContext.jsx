@@ -1,15 +1,15 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export const TarefaContext = createContext();
 
 export const TarefaContextProvider = ({children}) =>{
-    const [pendente, setPendente] = useState([{titulo: 'Distribuir as Tarefas', projeto: 'Meu Projeto 1', data: '2019-10-02'}]);
-    const [andamento, setAndamento] = useState([{titulo: 'Distribuir as Tarefas 2', projeto: 'Meu Projeto 2', data: '2019-10-02'}]);
-    const [concluido, setConcluido] = useState([{titulo: 'Distribuir as Tarefas 3', projeto: 'Meu Projeto 3', data: '2019-10-02'}]);
+    const [pendente, setPendente] = useState([]);
+    const [andamento, setAndamento] = useState([]);
+    const [concluido, setConcluido] = useState([]);
+    const [usuario, setUsuario] = useState([])
 
     const moverProximo = (tarefa, listaDestino) => {
         if(listaDestino === 'andamento'){
-            console.log('Clicou')
             setPendente((prevLista) => prevLista.filter((t) => t.titulo !== tarefa.titulo));
             setAndamento((prevLista) => [...prevLista, tarefa]);
         }
@@ -17,6 +17,10 @@ export const TarefaContextProvider = ({children}) =>{
             setAndamento((prevLista) => prevLista.filter((t) => t.titulo !== tarefa.titulo));
             setConcluido((prevLista) => [...prevLista, tarefa]);
         }
+    }
+
+    const adicionarUsuario = (novoUsuario) => {
+        setUsuario((prevLista) => [...prevLista, novoUsuario])
     }
 
     return(
@@ -27,7 +31,10 @@ export const TarefaContextProvider = ({children}) =>{
             setAndamento,
             concluido,
             setConcluido,
-            moverProximo
+            moverProximo,
+            usuario,
+            setUsuario,
+            adicionarUsuario
         }}>
             {children}
         </TarefaContext.Provider>
