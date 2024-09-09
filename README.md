@@ -25,3 +25,11 @@ Este é um gerenciador de tarefas simples, onde você pode cadastrar, editar, ap
    ```bash
    git clone https://github.com/seu-usuario/seu-repositorio.git
    cd seu-repositorio
+
+2. Instale as dependências:
+   ```bash
+   npm install
+3. Inicie o servidor
+   ```bash
+   npm run dev
+
