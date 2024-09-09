@@ -33,3 +33,9 @@ Este é um gerenciador de tarefas simples, onde você pode cadastrar, editar, ap
    ```bash
    npm run dev
 
+
+## Link do Vercel
+
+Você pode acessar o sistema online através do seguinte link:
+
+🔗 [Gerenciador de Tarefas - Vercel](https://gerenciador-tarefas-667o.vercel.app/)
